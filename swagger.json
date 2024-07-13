@@ -1,0 +1,751 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "HNG Boilerplate API",
+    "version" : "0.0.1",
+    "description" : "The purpose of the HNG boilerplates is to create repositories for particular project stacks that show simple, secure and efficient ways of achieving common tasks that one tends to need to do in those stacks.\n"
+  },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/BugBusters_HNG/bugbusters/0.0.1"
+  }, {
+    "url" : "https://example.com/api/v1",
+    "description" : "Live Server"
+  }, {
+    "url" : "https://staging.example.com/api/v1",
+    "description" : "Staging Server"
+  } ],
+  "paths" : {
+    "/auth/login" : {
+      "post" : {
+        "summary" : "User Login",
+        "tags" : [ "Authentication" ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string",
+                    "format" : "email",
+                    "example" : "user@example.com"
+                  },
+                  "password" : {
+                    "type" : "string",
+                    "format" : "password",
+                    "example" : "password123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Login successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "token" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Invalid credentials"
+          }
+        }
+      }
+    },
+    "/auth/register" : {
+      "post" : {
+        "summary" : "User Registration",
+        "tags" : [ "Authentication" ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "username" : {
+                    "type" : "string",
+                    "example" : "john_doe"
+                  },
+                  "email" : {
+                    "type" : "string",
+                    "format" : "email",
+                    "example" : "user@example.com"
+                  },
+                  "password" : {
+                    "type" : "string",
+                    "format" : "password",
+                    "example" : "password123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "User registered successfully"
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        }
+      }
+    },
+    "/auth/social" : {
+      "post" : {
+        "summary" : "Social Authentication",
+        "tags" : [ "Authentication" ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "provider" : {
+                    "type" : "string",
+                    "enum" : [ "google", "facebook", "twitter" ],
+                    "example" : "google"
+                  },
+                  "token" : {
+                    "type" : "string",
+                    "example" : "soc1alt0ken"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Authentication successful"
+          },
+          "400" : {
+            "description" : "Bad reques"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/magic-link" : {
+      "post" : {
+        "summary" : "Magic Link Authentication",
+        "tags" : [ "Authentication" ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string",
+                    "format" : "email",
+                    "example" : "user@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Magic link sent"
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        }
+      }
+    },
+    "/users" : {
+      "get" : {
+        "summary" : "List Users",
+        "tags" : [ "Users & Organisations" ],
+        "responses" : {
+          "200" : {
+            "description" : "List of users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}" : {
+      "get" : {
+        "summary" : "Get User Details",
+        "tags" : [ "Users & Organisations" ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User details",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Update User",
+        "tags" : [ "Users & Organisations" ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "User updated"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete User",
+        "tags" : [ "Users & Organisations" ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User deleted"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      }
+    },
+    "/contact-us" : {
+      "post" : {
+        "summary" : "Contact Us Form Submission",
+        "tags" : [ "Contact Us" ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "name" : {
+                    "type" : "string",
+                    "example" : "John Doe"
+                  },
+                  "email" : {
+                    "type" : "string",
+                    "format" : "email",
+                    "example" : "johndoe@example.com"
+                  },
+                  "message" : {
+                    "type" : "string",
+                    "example" : "Your message here"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Form submitted successfully"
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        }
+      }
+    },
+    "/notifications" : {
+      "get" : {
+        "summary" : "List Notifications",
+        "tags" : [ "Notifications" ],
+        "responses" : {
+          "200" : {
+            "description" : "List of notifications",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Notification"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Send Notification",
+        "tags" : [ "Notifications" ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "message" : {
+                    "type" : "string",
+                    "example" : "Notification message"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Notification sent successfully"
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        }
+      }
+    },
+    "/settings" : {
+      "get" : {
+        "summary" : "Get Settings",
+        "tags" : [ "Settings" ],
+        "responses" : {
+          "200" : {
+            "description" : "Settings retrieved",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Setting"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/waitlist" : {
+      "post" : {
+        "summary" : "Add to Waitlist",
+        "tags" : [ "Waitlist" ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string",
+                    "format" : "email",
+                    "example" : "user@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Added to waitlist"
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        }
+      }
+    },
+    "/invite" : {
+      "post" : {
+        "summary" : "Send an Invite",
+        "tags" : [ "Invite Flow" ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Invite"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Invite sent"
+          },
+          "400" : {
+            "description" : "Bad request"
+          }
+        }
+      }
+    },
+    "/user-data" : {
+      "get" : {
+        "summary" : "Export User Data",
+        "tags" : [ "User Data Export" ],
+        "responses" : {
+          "200" : {
+            "description" : "User data exported",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/random-data" : {
+      "get" : {
+        "summary" : "List Random Data",
+        "tags" : [ "Random Data" ],
+        "responses" : {
+          "200" : {
+            "description" : "List of random data",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/RandomData"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/random-data/{dataId}" : {
+      "get" : {
+        "summary" : "View Single Data Item",
+        "tags" : [ "Random Data" ],
+        "parameters" : [ {
+          "name" : "dataId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Random data item details",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RandomData"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Data item not found"
+          }
+        }
+      }
+    },
+    "/other-data" : {
+      "get" : {
+        "summary" : "List Other Data with Search and Sorting",
+        "tags" : [ "Other Data List" ],
+        "responses" : {
+          "200" : {
+            "description" : "List of other data",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/RandomData"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/charts" : {
+      "get" : {
+        "summary" : "Retrieve Chart Data",
+        "tags" : [ "Charts" ],
+        "responses" : {
+          "200" : {
+            "description" : "Chart data retrieved",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Chart"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/content" : {
+      "get" : {
+        "summary" : "Retrieve Content Data for Editing",
+        "tags" : [ "Content Edit" ],
+        "responses" : {
+          "200" : {
+            "description" : "Content data retrieved",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Content"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blog" : {
+      "get" : {
+        "summary" : "Retrieve Blog Data",
+        "tags" : [ "Blog" ],
+        "responses" : {
+          "200" : {
+            "description" : "Blog data retrieved",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Blog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/language" : {
+      "get" : {
+        "summary" : "Retrieve Available Languages and Regions",
+        "tags" : [ "Language & Region" ],
+        "responses" : {
+          "200" : {
+            "description" : "Languages and regions retrieved",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email-templates" : {
+      "get" : {
+        "summary" : "Retrieve and Manage Email Templates",
+        "tags" : [ "Email Template Management" ],
+        "responses" : {
+          "200" : {
+            "description" : "Email templates retrieved",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/EmailTemplate"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "User" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "username" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string",
+            "format" : "email"
+          }
+        }
+      },
+      "Notification" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Setting" : {
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Invite" : {
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "format" : "email"
+          }
+        }
+      },
+      "RandomData" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "data" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Chart" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object"
+            }
+          }
+        }
+      },
+      "Content" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "data" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Blog" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "content" : {
+            "type" : "string"
+          }
+        }
+      },
+      "EmailTemplate" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "subject" : {
+            "type" : "string"
+          },
+          "body" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
