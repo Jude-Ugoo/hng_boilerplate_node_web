@@ -2481,7 +2481,20 @@
             }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Unauthorized access"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -2519,13 +2532,55 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Message created successfully"
+            "description" : "Message created successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Message created successfully"
+                    },
+                    "data" : {
+                      "$ref" : "#/components/schemas/Message"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request"
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Invalid input data"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Unauthorized access"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -2573,10 +2628,36 @@
             }
           },
           "404" : {
-            "description" : "Message not found"
+            "description" : "Message not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Message not found"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Unauthorized access"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -2622,13 +2703,52 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Message updated"
+            "description" : "Message updated successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Message updated successfully"
+                    }
+                  }
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "Message not found"
+            "description" : "Message not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Message not found"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Unauthorized access"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -2664,13 +2784,52 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Message deleted"
+            "description" : "Message deleted successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Message deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "Message not found"
+            "description" : "Message not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Message not found"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "Unauthorized access",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Unauthorized access"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
