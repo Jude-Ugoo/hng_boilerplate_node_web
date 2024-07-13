@@ -911,6 +911,47 @@
       }
     },
     "/invite" : {
+      "get" : {
+        "summary" : "Retrieve Invite List",
+        "tags" : [ "Invite Flow" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of invites retrieved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Invite"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post" : {
         "summary" : "Send an Invite",
         "tags" : [ "Invite Flow" ],
