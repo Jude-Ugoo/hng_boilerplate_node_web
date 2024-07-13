@@ -1653,6 +1653,93 @@
           }
         }
       }
+    },
+    "/payments" : {
+      "get" : {
+        "summary" : "List Payments",
+        "tags" : [ "Payments" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of payments",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Payment"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a New Payment",
+        "tags" : [ "Payments" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Payment"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Payment created successfully"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -1803,6 +1890,36 @@
             "example" : "This is a message content"
           },
           "senderId" : {
+            "type" : "string",
+            "example" : "userId123"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "format" : "date-time",
+            "example" : "2023-01-01T12:00:00Z"
+          }
+        }
+      },
+      "Payment" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "amount" : {
+            "type" : "number",
+            "example" : 99.99
+          },
+          "currency" : {
+            "type" : "string",
+            "example" : "USD"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "pending", "completed", "failed" ],
+            "example" : "completed"
+          },
+          "userId" : {
             "type" : "string",
             "example" : "userId123"
           },
