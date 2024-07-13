@@ -733,6 +733,50 @@
             }
           }
         }
+      },
+      "put" : {
+        "summary" : "Update Settings",
+        "tags" : [ "Settings" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Setting"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Settings updated successfully"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/waitlist" : {
