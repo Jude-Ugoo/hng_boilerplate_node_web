@@ -60,6 +60,22 @@
           },
           "401" : {
             "description" : "Invalid credentials"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -100,6 +116,22 @@
           },
           "400" : {
             "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -134,7 +166,7 @@
             "description" : "Authentication successful"
           },
           "400" : {
-            "description" : "Bad reques"
+            "description" : "Bad request"
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -182,6 +214,134 @@
           },
           "400" : {
             "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/password-reset-request" : {
+      "post" : {
+        "summary" : "Request Password Reset",
+        "tags" : [ "Authentication" ],
+        "description" : "Request a password reset link to be sent to the user's email",
+        "operationId" : "requestPasswordReset",
+        "requestBody" : {
+          "description" : "Email of the user requesting the password reset",
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string",
+                    "format" : "email",
+                    "example" : "user@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Password reset email sent"
+          },
+          "404" : {
+            "description" : "User not found"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/reset-password" : {
+      "post" : {
+        "summary" : "Reset Password",
+        "tags" : [ "Authentication" ],
+        "description" : "Reset the user's password using a reset token",
+        "operationId" : "resetPassword",
+        "requestBody" : {
+          "description" : "New password and reset token",
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "token" : {
+                    "type" : "string",
+                    "description" : "Password reset token",
+                    "example" : "1a2b3c4d5e6f7g8h9i0j"
+                  },
+                  "newPassword" : {
+                    "type" : "string",
+                    "format" : "password",
+                    "description" : "The new password",
+                    "example" : "newPassword123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Password reset successful"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "404" : {
+            "description" : "Invalid or expired token"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -199,6 +359,25 @@
                   "type" : "array",
                   "items" : {
                     "$ref" : "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
                   }
                 }
               }
@@ -232,6 +411,22 @@
           },
           "404" : {
             "description" : "User not found"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -262,6 +457,22 @@
           },
           "404" : {
             "description" : "User not found"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -282,6 +493,22 @@
           },
           "404" : {
             "description" : "User not found"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -321,6 +548,22 @@
           },
           "400" : {
             "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -370,6 +613,22 @@
           },
           "400" : {
             "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -419,6 +678,22 @@
           },
           "400" : {
             "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -443,6 +718,22 @@
           },
           "400" : {
             "description" : "Bad request"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -512,6 +803,22 @@
           },
           "404" : {
             "description" : "Data item not found"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -529,6 +836,22 @@
                   "type" : "array",
                   "items" : {
                     "$ref" : "#/components/schemas/RandomData"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
                   }
                 }
               }
@@ -551,6 +874,22 @@
                 }
               }
             }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -569,6 +908,22 @@
                 }
               }
             }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -584,6 +939,22 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Blog"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
                 }
               }
             }
@@ -608,6 +979,22 @@
                 }
               }
             }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -625,6 +1012,22 @@
                   "type" : "array",
                   "items" : {
                     "$ref" : "#/components/schemas/EmailTemplate"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
                   }
                 }
               }
