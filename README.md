@@ -1,8 +1,39 @@
-#<img src="https://i.ibb.co/RCdFLsf/bugbusters-logo.png" alt="bugbusters-logo" border="0"> BugBusters API Integration Documentation
+# ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)
 
 ## Overview
 
 This document provides an overview of the BugBusters API, outlining its structure, dependencies, setup instructions, and folder organization.
+
+##Features
+Authentication: Secure user login, registration, and social authentication (Google, Facebook, Twitter).
+Authorization: Role-based access control (RBAC) ensures secure access to endpoints.
+User Management: CRUD operations for user profiles, password resets, and profile settings.
+Organization Management: CRUD operations for managing organizations, with admin-specific routes for organizational settings.
+Email and Messaging: Endpoints for managing emails and messages, including CRUD operations.
+Payment Processing: Secure endpoints for processing payments.
+Customization: Configuration options for settings and email templates.
+Error Handling: Consistent handling of errors with appropriate status codes and messages.
+
+
+## API Endpoints
+
+All API endpoints can be referenced in the [Bug Busters API_REFERENCE](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) document.
+
+## Database Design
+
+[Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
+
+[![Database ER diagram](https://i.ibb.co/whKQSsP/backend-stage-3-task-1.png)](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
+
+[Database Reference](https://dbdocs.io/cyber330d/BugBusters)
+
+## Versioning
+
+This project is versioned to ensure backward compatibility and easy maintenance. The current version is 0.0.1
+
+## Contributors
+list of people that helped bring this task to a success
+[Contributors list](CONTRIBUTORS.md)
 
 ## Folder Structure
 
@@ -254,8 +285,6 @@ By following these steps, you should have your Node.js and TypeScript applicatio
 ## Database Design
 
 [Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
-
-[![Database ER diagram](https://i.ibb.co/whKQSsP/backend-stage-3-task-1.png)](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
 
 [Database Reference](https://dbdocs.io/cyber330d/BugBusters)
 
