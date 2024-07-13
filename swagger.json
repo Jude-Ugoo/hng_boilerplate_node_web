@@ -279,10 +279,6 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "status" : {
-                      "type" : "boolean",
-                      "example" : true
-                    },
                     "message" : {
                       "type" : "string",
                       "example" : "Magic link sent successfully"
@@ -299,10 +295,6 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "status" : {
-                      "type" : "boolean",
-                      "example" : false
-                    },
                     "message" : {
                       "type" : "string",
                       "example" : "Invalid input data"
@@ -319,10 +311,6 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "status" : {
-                      "type" : "boolean",
-                      "example" : false
-                    },
                     "message" : {
                       "type" : "string",
                       "example" : "An unexpected error occurred"
