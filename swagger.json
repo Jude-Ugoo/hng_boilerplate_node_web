@@ -447,13 +447,52 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Password reset successful"
+            "description" : "Password reset successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Password reset successful"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request"
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Invalid input data"
+                    }
+                  }
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "Invalid or expired token"
+            "description" : "Invalid or expired token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Invalid or expired token"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -462,7 +501,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "error" : {
+                    "message" : {
                       "type" : "string",
                       "example" : "An unexpected error occurred"
                     }
