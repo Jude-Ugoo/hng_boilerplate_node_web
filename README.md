@@ -1,4 +1,4 @@
-# [BugBusters] Integration Documentation
+# [BugBusters] API Integration Documentation
 
 ## Overview
 
