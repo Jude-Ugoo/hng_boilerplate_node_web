@@ -273,10 +273,44 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Magic link sent"
+            "description" : "Magic link sent",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "status" : {
+                      "type" : "boolean",
+                      "example" : true
+                    },
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Magic link sent successfully"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request"
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "status" : {
+                      "type" : "boolean",
+                      "example" : false
+                    },
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Invalid input data"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -285,7 +319,11 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "error" : {
+                    "status" : {
+                      "type" : "boolean",
+                      "example" : false
+                    },
+                    "message" : {
                       "type" : "string",
                       "example" : "An unexpected error occurred"
                     }
