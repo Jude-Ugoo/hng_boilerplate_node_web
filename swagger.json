@@ -655,10 +655,36 @@
         },
         "responses" : {
           "200" : {
-            "description" : "User updated"
+            "description" : "User updated",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "User updated successfully"
+                    }
+                  }
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "User not found"
+            "description" : "User not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "User not found"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
