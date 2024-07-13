@@ -3903,15 +3903,54 @@
                 }
               }
             }
-          },
-          "404" : {
-            "description" : "Widget not found"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
+          }
+        },
+        "404" : {
+          "description" : "Widget not found",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "error" : {
+                    "type" : "string",
+                    "example" : "Widget not found"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "401" : {
+          "description" : "Unauthorized access",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "error" : {
+                    "type" : "string",
+                    "example" : "Unauthorized access"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "500" : {
+          "description" : "Internal Server Error",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "error" : {
+                    "type" : "string",
+                    "example" : "An unexpected error occurred"
+                  }
+                }
+              }
+            }
           }
         }
       },
