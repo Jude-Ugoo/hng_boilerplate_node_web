@@ -1916,7 +1916,20 @@
             }
           },
           "404" : {
-            "description" : "Data item not found"
+            "description" : "Data item not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Data item not found"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
