@@ -1310,10 +1310,36 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Added to waitlist"
+            "description" : "Added to waitlist",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Added to waitlist successfully"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request"
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Invalid input data"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
