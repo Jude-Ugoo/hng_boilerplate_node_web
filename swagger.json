@@ -714,6 +714,50 @@
         }
       }
     },
+    "/notifications/{notificationId}" : {
+      "delete" : {
+        "summary" : "Delete a Notification",
+        "tags" : [ "Notifications" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "notificationId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Notification deleted successfully"
+          },
+          "404" : {
+            "description" : "Notification not found"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/settings" : {
       "get" : {
         "summary" : "Get Settings",
