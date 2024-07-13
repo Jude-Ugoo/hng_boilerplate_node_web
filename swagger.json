@@ -823,7 +823,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "Invalid input data"
                     }
@@ -981,13 +981,52 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Notification deleted successfully"
+            "description" : "Notification deleted successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Notification deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
           },
           "404" : {
-            "description" : "Notification not found"
+            "description" : "Notification not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Notification not found"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized access"
+            "description" : "Unauthorized access",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Unauthorized access"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
