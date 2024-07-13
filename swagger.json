@@ -350,6 +350,9 @@
       "get" : {
         "summary" : "List Users",
         "tags" : [ "Users & Organisations" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
         "responses" : {
           "200" : {
             "description" : "List of users",
@@ -398,6 +401,9 @@
             "type" : "string"
           }
         } ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
         "responses" : {
           "200" : {
             "description" : "User details",
@@ -440,6 +446,9 @@
           "schema" : {
             "type" : "string"
           }
+        } ],
+        "security" : [ {
+          "BearerAuth" : [ ]
         } ],
         "requestBody" : {
           "required" : true,
@@ -486,6 +495,9 @@
           "schema" : {
             "type" : "string"
           }
+        } ],
+        "security" : [ {
+          "BearerAuth" : [ ]
         } ],
         "responses" : {
           "200" : {
@@ -572,6 +584,9 @@
       "get" : {
         "summary" : "List Notifications",
         "tags" : [ "Notifications" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
         "responses" : {
           "200" : {
             "description" : "List of notifications",
@@ -607,6 +622,9 @@
             }
           }
         },
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
         "responses" : {
           "200" : {
             "description" : "Notification sent successfully"
@@ -637,6 +655,9 @@
       "get" : {
         "summary" : "Get Settings",
         "tags" : [ "Settings" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
         "responses" : {
           "200" : {
             "description" : "Settings retrieved",
@@ -712,6 +733,9 @@
             }
           }
         },
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
         "responses" : {
           "200" : {
             "description" : "Invite sent"
@@ -742,6 +766,9 @@
       "get" : {
         "summary" : "Export User Data",
         "tags" : [ "User Data Export" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
         "responses" : {
           "200" : {
             "description" : "User data exported",
@@ -999,6 +1026,302 @@
         }
       }
     },
+    "/email" : {
+      "get" : {
+        "summary" : "List Emails",
+        "tags" : [ "Email Management" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of emails retrieved",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Email"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create Email",
+        "tags" : [ "Email Management" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Email"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Email created successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Email"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Invalid input"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email/{emailId}" : {
+      "get" : {
+        "summary" : "Get Email Details",
+        "tags" : [ "Email Management" ],
+        "parameters" : [ {
+          "name" : "emailId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Email details retrieved",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Email"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Email not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Email not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Update Email",
+        "tags" : [ "Email Management" ],
+        "parameters" : [ {
+          "name" : "emailId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Email"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Email updated successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Email"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Email not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Email not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete Email",
+        "tags" : [ "Email Management" ],
+        "parameters" : [ {
+          "name" : "emailId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Email deleted successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Email deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Email not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Email not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/email-templates" : {
       "get" : {
         "summary" : "Retrieve and Manage Email Templates",
@@ -1038,6 +1361,13 @@
     }
   },
   "components" : {
+    "securitySchemes" : {
+      "BearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    },
     "schemas" : {
       "User" : {
         "type" : "object",
@@ -1132,6 +1462,24 @@
           },
           "content" : {
             "type" : "string"
+          }
+        }
+      },
+      "Email" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "subject" : {
+            "type" : "string"
+          },
+          "body" : {
+            "type" : "string"
+          },
+          "recipient" : {
+            "type" : "string",
+            "format" : "email"
           }
         }
       },
