@@ -1,4 +1,4 @@
-# [App Name] Integration Documentation
+# [BugBusters] Integration Documentation
 
 ## Overview
 
@@ -21,6 +21,7 @@
 |--- .gitignore
 |--- package.json
 |--- tsconfig.json
+|--- swagger.json
 ```
 
 ## Dependencies (Dev)
@@ -29,7 +30,9 @@
 - TypeScript
 - Express
 - ts-node-dev
-- [Other dependencies]
+- swagger-jsdoc
+- swagger-ui-express
+- express
 
 ## Getting Started
 
@@ -227,6 +230,7 @@ Here's an overview of the project's folder structure:
 |--- .gitignore
 |--- package.json
 |--- tsconfig.json
+|---swagger.json
 ```
 
 ## Scripts
@@ -244,6 +248,7 @@ Here are some useful npm scripts that you can use during development and product
 - [Node.js Documentation](https://nodejs.org/en/docs/)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 - [Express Documentation](https://expressjs.com/)
+- [swagger Documentation](https://swagger.io/docs/)
 
 By following these steps, you should have your Node.js and TypeScript application up and running. If you encounter any issues, please refer to the documentation of the respective tools or seek help from the community.
 
@@ -253,4 +258,4 @@ All API endpoints can be referenced in the [API Reference](API_REFERENCE.md) doc
 
 ## Versioning
 
-This project is versioned to ensure backward compatibility and easy maintenance. The current version is [version].
+This project is versioned to ensure backward compatibility and easy maintenance. The current version is 0.0.1
