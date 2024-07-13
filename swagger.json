@@ -996,22 +996,167 @@
     },
     "/user-data" : {
       "get" : {
-        "summary" : "Export User Data",
-        "tags" : [ "User Data Export" ],
+        "summary" : "Retrieve User Data",
+        "tags" : [ "User Data" ],
         "security" : [ {
           "BearerAuth" : [ ]
         } ],
         "responses" : {
           "200" : {
-            "description" : "User data exported",
+            "description" : "User data retrieved successfully",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "string",
-                  "format" : "binary"
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/UserData"
+                  }
                 }
               }
             }
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create User Data",
+        "tags" : [ "User Data" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UserData"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "User data created successfully"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user-data/{userId}" : {
+      "get" : {
+        "summary" : "Retrieve User Data by ID",
+        "tags" : [ "User Data" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User data retrieved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UserData"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "User data not found"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Update User Data",
+        "tags" : [ "User Data" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UserData"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "User data updated successfully"
+          },
+          "404" : {
+            "description" : "User data not found"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete User Data",
+        "tags" : [ "User Data" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User data deleted successfully"
+          },
+          "404" : {
+            "description" : "User data not found"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
           }
         }
       }
