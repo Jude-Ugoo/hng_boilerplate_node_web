@@ -59,7 +59,20 @@
             }
           },
           "401" : {
-            "description" : "Invalid credentials"
+            "description" : "Invalid credentials",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -112,10 +125,35 @@
         },
         "responses" : {
           "201" : {
-            "description" : "User registered successfully"
+            "description" : "User registered successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "token" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request"
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Invalid input data"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -163,10 +201,35 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Authentication successful"
+            "description" : "Authentication successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "token" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request"
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Invalid input data"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -651,90 +714,6 @@
         }
       }
     },
-    "/profile-settings" : {
-      "get" : {
-        "summary" : "Retrieve Profile Settings",
-        "tags" : [ "Profile Settings" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Profile settings retrieved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/ProfileSetting"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "An unexpected error occurred"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "put" : {
-        "summary" : "Update Profile Settings",
-        "tags" : [ "Profile Settings" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "requestBody" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/ProfileSetting"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Profile settings updated successfully"
-          },
-          "400" : {
-            "description" : "Bad request"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "An unexpected error occurred"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/settings" : {
       "get" : {
         "summary" : "Get Settings",
@@ -749,50 +728,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Setting"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put" : {
-        "summary" : "Update Settings",
-        "tags" : [ "Settings" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "requestBody" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/Setting"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Settings updated successfully"
-          },
-          "400" : {
-            "description" : "Bad request"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "An unexpected error occurred"
-                    }
-                  }
                 }
               }
             }
@@ -848,47 +783,6 @@
       }
     },
     "/invite" : {
-      "get" : {
-        "summary" : "Retrieve Invite List",
-        "tags" : [ "Invite Flow" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "List of invites retrieved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Invite"
-                  }
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "An unexpected error occurred"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
       "post" : {
         "summary" : "Send an Invite",
         "tags" : [ "Invite Flow" ],
@@ -933,164 +827,22 @@
     },
     "/user-data" : {
       "get" : {
-        "summary" : "Retrieve User Data",
-        "tags" : [ "User Data" ],
+        "summary" : "Export User Data",
+        "tags" : [ "User Data Export" ],
         "security" : [ {
           "BearerAuth" : [ ]
         } ],
         "responses" : {
           "200" : {
-            "description" : "User data retrieved successfully",
+            "description" : "User data exported",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/UserData"
+                  "type" : "string",
+                  "format" : "binary"
                 }
               }
             }
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
-          }
-        }
-      },
-      "post" : {
-        "summary" : "Create User Data",
-        "tags" : [ "User Data" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "requestBody" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/UserData"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "201" : {
-            "description" : "User data created successfully"
-          },
-          "400" : {
-            "description" : "Bad request"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/user-data/{userId}" : {
-      "get" : {
-        "summary" : "Retrieve User Data by ID",
-        "tags" : [ "User Data" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "parameters" : [ {
-          "name" : "userId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "User data retrieved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/UserData"
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "User data not found"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
-          }
-        }
-      },
-      "put" : {
-        "summary" : "Update User Data",
-        "tags" : [ "User Data" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "parameters" : [ {
-          "name" : "userId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/UserData"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "User data updated successfully"
-          },
-          "404" : {
-            "description" : "User data not found"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
-          }
-        }
-      },
-      "delete" : {
-        "summary" : "Delete User Data",
-        "tags" : [ "User Data" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "parameters" : [ {
-          "name" : "userId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "User data deleted successfully"
-          },
-          "404" : {
-            "description" : "User data not found"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
           }
         }
       }
@@ -1157,173 +909,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/widget" : {
-      "get" : {
-        "summary" : "Retrieve Widgets",
-        "tags" : [ "Widgets" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "List of widgets retrieved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Widget"
-                  }
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
-          }
-        }
-      },
-      "post" : {
-        "summary" : "Create a Widget",
-        "tags" : [ "Widgets" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "requestBody" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/Widget"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "201" : {
-            "description" : "Widget created successfully"
-          },
-          "400" : {
-            "description" : "Bad request"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/widget/{widgetId}" : {
-      "get" : {
-        "summary" : "Retrieve a Widget by ID",
-        "tags" : [ "Widgets" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "parameters" : [ {
-          "name" : "widgetId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Widget retrieved successfully",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Widget"
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Widget not found"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
-          }
-        }
-      },
-      "put" : {
-        "summary" : "Update a Widget",
-        "tags" : [ "Widgets" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "parameters" : [ {
-          "name" : "widgetId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/Widget"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Widget updated successfully"
-          },
-          "404" : {
-            "description" : "Widget not found"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
-          }
-        }
-      },
-      "delete" : {
-        "summary" : "Delete a Widget",
-        "tags" : [ "Widgets" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "parameters" : [ {
-          "name" : "widgetId",
-          "in" : "path",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Widget deleted successfully"
-          },
-          "404" : {
-            "description" : "Widget not found"
-          },
-          "401" : {
-            "description" : "Unauthorized access"
-          },
-          "500" : {
-            "description" : "Internal Server Error"
           }
         }
       }
@@ -2068,93 +1653,6 @@
           }
         }
       }
-    },
-    "/payments" : {
-      "get" : {
-        "summary" : "List Payments",
-        "tags" : [ "Payments" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "List of payments",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Payment"
-                  }
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "An unexpected error occurred"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post" : {
-        "summary" : "Create a New Payment",
-        "tags" : [ "Payments" ],
-        "security" : [ {
-          "BearerAuth" : [ ]
-        } ],
-        "requestBody" : {
-          "required" : true,
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/Payment"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "201" : {
-            "description" : "Payment created successfully"
-          },
-          "400" : {
-            "description" : "Bad request"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          },
-          "500" : {
-            "description" : "Internal Server Error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "object",
-                  "properties" : {
-                    "error" : {
-                      "type" : "string",
-                      "example" : "An unexpected error occurred"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components" : {
@@ -2192,21 +1690,6 @@
           }
         }
       },
-      "ProfileSetting" : {
-        "type" : "object",
-        "properties" : {
-          "username" : {
-            "type" : "string"
-          },
-          "email" : {
-            "type" : "string",
-            "format" : "email"
-          },
-          "preferences" : {
-            "type" : "object"
-          }
-        }
-      },
       "Setting" : {
         "type" : "object",
         "properties" : {
@@ -2224,34 +1707,6 @@
           "email" : {
             "type" : "string",
             "format" : "email"
-          }
-        }
-      },
-      "Widget" : {
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string"
-          },
-          "name" : {
-            "type" : "string"
-          },
-          "description" : {
-            "type" : "string"
-          }
-        }
-      },
-      "UserData" : {
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string"
-          },
-          "userId" : {
-            "type" : "string"
-          },
-          "data" : {
-            "type" : "object"
           }
         }
       },
@@ -2348,36 +1803,6 @@
             "example" : "This is a message content"
           },
           "senderId" : {
-            "type" : "string",
-            "example" : "userId123"
-          },
-          "createdAt" : {
-            "type" : "string",
-            "format" : "date-time",
-            "example" : "2023-01-01T12:00:00Z"
-          }
-        }
-      },
-      "Payment" : {
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string"
-          },
-          "amount" : {
-            "type" : "number",
-            "example" : 99.99
-          },
-          "currency" : {
-            "type" : "string",
-            "example" : "USD"
-          },
-          "status" : {
-            "type" : "string",
-            "enum" : [ "pending", "completed", "failed" ],
-            "example" : "completed"
-          },
-          "userId" : {
             "type" : "string",
             "example" : "userId123"
           },
