@@ -295,7 +295,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "Invalid input data"
                     }
@@ -311,7 +311,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "An unexpected error occurred"
                     }
@@ -371,7 +371,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "Invalid input data"
                     }
@@ -387,7 +387,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "User not found"
                     }
@@ -403,7 +403,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "An unexpected error occurred"
                     }
@@ -469,7 +469,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "Invalid input data"
                     }
@@ -485,7 +485,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "Invalid or expired token"
                     }
@@ -501,7 +501,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "message" : {
+                    "error" : {
                       "type" : "string",
                       "example" : "An unexpected error occurred"
                     }
@@ -1085,13 +1085,52 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Settings updated successfully"
+            "description" : "Settings updated successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Settings updated successfully"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request"
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Invalid input data"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "Unauthorized access"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
