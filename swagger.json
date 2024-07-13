@@ -349,13 +349,52 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Password reset email sent"
-          },
-          "404" : {
-            "description" : "User not found"
+            "description" : "Password reset email sent",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Password reset email sent successfully"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request"
+            "description" : "Bad request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "Invalid input data"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "User not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "type" : "string",
+                      "example" : "User not found"
+                    }
+                  }
+                }
+              }
+            }
           },
           "500" : {
             "description" : "Internal Server Error",
@@ -364,7 +403,7 @@
                 "schema" : {
                   "type" : "object",
                   "properties" : {
-                    "error" : {
+                    "message" : {
                       "type" : "string",
                       "example" : "An unexpected error occurred"
                     }
