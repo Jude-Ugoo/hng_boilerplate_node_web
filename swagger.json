@@ -1909,6 +1909,173 @@
           }
         }
       }
+    },
+    "/widget" : {
+      "get" : {
+        "summary" : "Retrieve Widgets",
+        "tags" : [ "Widgets" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of widgets retrieved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Widget"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a Widget",
+        "tags" : [ "Widgets" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Widget"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Widget created successfully"
+          },
+          "400" : {
+            "description" : "Bad request"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/widget/{widgetId}" : {
+      "get" : {
+        "summary" : "Retrieve a Widget by ID",
+        "tags" : [ "Widgets" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "widgetId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Widget retrieved successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Widget"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Widget not found"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Update a Widget",
+        "tags" : [ "Widgets" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "widgetId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Widget"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Widget updated successfully"
+          },
+          "404" : {
+            "description" : "Widget not found"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete a Widget",
+        "tags" : [ "Widgets" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "widgetId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Widget deleted successfully"
+          },
+          "404" : {
+            "description" : "Widget not found"
+          },
+          "401" : {
+            "description" : "Unauthorized access"
+          },
+          "500" : {
+            "description" : "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -2111,6 +2278,34 @@
             "type" : "string",
             "format" : "date-time",
             "example" : "2023-01-01T12:00:00Z"
+          }
+        }
+      },
+      "Widget" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          }
+        }
+      },
+      "UserData" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "userId" : {
+            "type" : "string"
+          },
+          "data" : {
+            "type" : "object"
           }
         }
       }
