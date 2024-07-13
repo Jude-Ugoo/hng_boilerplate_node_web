@@ -1,4 +1,4 @@
-# [BugBusters] API Integration Documentation
+#<img src="https://i.ibb.co/RCdFLsf/bugbusters-logo.png" alt="bugbusters-logo" border="0"> BugBusters API Integration Documentation
 
 ## Overview
 
@@ -255,7 +255,7 @@ By following these steps, you should have your Node.js and TypeScript applicatio
 
 [Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
 
-<img src="https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6" alt="database design" />
+[![Database ER diagram](https://i.ibb.co/whKQSsP/backend-stage-3-task-1.png)](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
 
 [Database Reference](https://dbdocs.io/cyber330d/BugBusters)
 
