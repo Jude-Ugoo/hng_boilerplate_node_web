@@ -2,7 +2,7 @@
 
 ## Overview
 
-[Description]
+This document provides an overview of the BugBusters API, outlining its structure, dependencies, setup instructions, and folder organization.
 
 ## Folder Structure
 
@@ -252,12 +252,17 @@ Here are some useful npm scripts that you can use during development and product
 
 By following these steps, you should have your Node.js and TypeScript application up and running. If you encounter any issues, please refer to the documentation of the respective tools or seek help from the community.
 ## Database Design
+
 [Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
-[Database Reference](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1)
+
 <img src="https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6" alt="database design" />
+
+[Database Reference](https://dbdocs.io/cyber330d/BugBusters)
+
+
 ## API Endpoints
 
-All API endpoints can be referenced in the [API_REFERENCE.md](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) document.
+All API endpoints can be referenced in the [Bug Busters API_REFERENCE](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) document.
 
 ## Versioning
 
