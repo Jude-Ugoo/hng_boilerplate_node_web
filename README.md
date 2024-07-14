@@ -1,4 +1,4 @@
-# ![BugBusters API Integration Documentation ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) 
+# [BugBusters API Integration Documentation ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) 
 
 ## Overview
 
