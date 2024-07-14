@@ -21,6 +21,7 @@ This document provides an overview of the BugBusters API, outlining its structur
 - **Error Handling:** Consistent handling of errors with appropriate status codes and messages.
 
 Base URL
+https://virtserver.swaggerhub.com/BugBusters_HNG/bugbusters/0.0.1
 Live URL: https://example.com/api/v1
 Staging URL: https://staging.example.com/api/v1
 
