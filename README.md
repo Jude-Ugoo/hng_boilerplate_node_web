@@ -23,7 +23,7 @@ This document provides an overview of the BugBusters API, outlining its structur
 
 ## API Endpoints
 
-All API endpoints can be referenced in the [Bug Busters API_REFERENCE](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) document.
+All API endpoints can be referenced in the [Bug Busters API_REFERENCE](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) and [Bug Busters API_Docs](API_DOC.md) documents.
 
 ## Database Design
 
