@@ -1,7 +1,4 @@
-
-  <img src="https://i.ibb.co/RCdFLsf/bugbusters-logo.png" alt="BugBusters Logo" style="width: 100px; height: 100px; margin-right: 20px;">
-
-  # BugBusters API Integration Documentation
+# BugBusters API Integration Documentation# ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png) BugBusters API Integration Documentation
   
 
 ## Overview
