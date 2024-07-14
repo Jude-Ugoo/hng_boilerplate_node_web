@@ -1,4 +1,8 @@
-# ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)   Bug Busters API Integration Documentation
+<div style="display: flex; align-items: center;">
+  <img src="https://i.ibb.co/RCdFLsf/bugbusters-logo.png" alt="BugBusters Logo" style="width: 100px; height: 100px; margin-right: 20px;">
+<div>
+  
+# BugBusters API Integration Documentation
 
 ## Overview
 
@@ -27,11 +31,11 @@ All API endpoints can be referenced in the [Bug Busters API_REFERENCE](https://a
 
 ## Database Design
 
-[Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
+[Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)  [Database Reference](https://dbdocs.io/cyber330d/BugBusters)
 
 [![Database ER diagram](https://i.ibb.co/whKQSsP/backend-stage-3-task-1.png)](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
 
-[Database Reference](https://dbdocs.io/cyber330d/BugBusters)
+
 
 ## Versioning
 
@@ -40,6 +44,13 @@ This project is versioned to ensure backward compatibility and easy maintenance.
 ## Contributors
 list of people that helped bring this task to a success
 [Contributors list](CONTRIBUTORS.md)
+We would like to thank the all the members of Team BugBusters for their contributions to Project BugBusters:
+**Judd Ugo (@johndoe)** - Designed organisations and super admin resources and endpoints
+**John Kamau (@John Kamau)** - Designed authentication & user resource and management endpoints.
+**Anita Olang (@Anita)** -Designed settings, data exports, widgets, charts, user_data endpoints
+**Timothy Stephen (@dandy-Tim)** - Designed payment, email, invite, waitlist, email template. contact us notifications endpoints and perform design reviews
+**Erasmus E Obeth (@cyber330d)** - Database design
+Special thanks to everyone who has helped make this project better!
 
 ## Folder Structure
 
