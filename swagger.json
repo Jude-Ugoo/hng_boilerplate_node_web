@@ -1939,6 +1939,52 @@
       }
     },
     "/notifications/{notificationId}" : {
+      "get" : {
+        "summary" : "Get a notification",
+        "tags" : [ "Notifications" ],
+        "security" : [ {
+          "BearerAuth" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "notificationId",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A single notification",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Notification"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "error" : {
+                      "type" : "string",
+                      "example" : "An unexpected error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "delete" : {
         "summary" : "Delete a Notification",
         "tags" : [ "Notifications" ],
