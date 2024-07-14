@@ -1,5 +1,4 @@
-# BugBusters API Integration Documentation# ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png) BugBusters API Integration Documentation
-  
+# BugBusters API Integration Documentation ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)
 
 ## Overview
 
