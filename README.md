@@ -1,8 +1,8 @@
-<div style="display: flex; align-items: center;">
+<div style="display: flex; align-items: center; justify-item:center">
   <img src="https://i.ibb.co/RCdFLsf/bugbusters-logo.png" alt="BugBusters Logo" style="width: 100px; height: 100px; margin-right: 20px;">
+  # BugBusters API Integration Documentation
 <div>
   
-# BugBusters API Integration Documentation
 
 ## Overview
 
