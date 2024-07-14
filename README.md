@@ -1,18 +1,24 @@
-# ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)
+# ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)   Bug Busters API Integration Documentation
 
 ## Overview
 
 This document provides an overview of the BugBusters API, outlining its structure, dependencies, setup instructions, and folder organization.
 
-##Features
-Authentication: Secure user login, registration, and social authentication (Google, Facebook, Twitter).
-Authorization: Role-based access control (RBAC) ensures secure access to endpoints.
-User Management: CRUD operations for user profiles, password resets, and profile settings.
-Organization Management: CRUD operations for managing organizations, with admin-specific routes for organizational settings.
-Email and Messaging: Endpoints for managing emails and messages, including CRUD operations.
-Payment Processing: Secure endpoints for processing payments.
-Customization: Configuration options for settings and email templates.
-Error Handling: Consistent handling of errors with appropriate status codes and messages.
+- **Authentication:** Secure user login, registration, and social authentication (Google, Facebook, Twitter), magic link.
+  
+- **Authorization:** Role-based access control (RBAC) ensures secure access to endpoints (Amin, user roles).
+  
+- **User Management:** CRUD operations for user profiles, password resets, and profile settings.
+  
+- **Organization Management:** CRUD operations for managing organizations, with admin-specific routes for organizational settings.
+  
+- **Email and Messaging:** Endpoints for managing emails, invites, waitlists and messages, including CRUD operations.
+  
+- **Payment Processing:** Secure endpoints for processing payments.
+  
+- **Customization:** Configuration options for settings, dashboard, charts, widgets and email templates.
+  
+- **Error Handling:** Consistent handling of errors with appropriate status codes and messages.
 
 
 ## API Endpoints
