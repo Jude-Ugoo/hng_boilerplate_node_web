@@ -1,3 +1,35 @@
+# [BugBusters API Integration Documentation ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) 
+
+## Overview
+
+This document provides an overview of the BugBusters API, outlining its structure, dependencies, setup instructions, and folder organization.
+
+- **Authentication:** Secure user login, registration, and social authentication (Google, Facebook, Twitter), magic link.
+  
+- **Authorization:** Role-based access control (RBAC) ensures secure access to endpoints (Amin, user roles).
+  
+- **User Management:** CRUD operations for user profiles, password resets, and profile settings.
+  
+- **Organization Management:** CRUD operations for managing organizations, with admin-specific routes for organizational settings.
+  
+- **Email and Messaging:** Endpoints for managing emails, invites, waitlists and messages, including CRUD operations.
+  
+- **Payment Processing:** Secure endpoints for processing payments.
+  
+- **Customization:** Configuration options for settings, dashboard, charts, widgets and email templates.
+  
+- **Error Handling:** Consistent handling of errors with appropriate status codes and messages.
+
+Base URL
+Live URL: https://example.com/api/v1
+Staging URL: https://staging.example.com/api/v1
+
+
+
+We have created Markdown  for each endpoint as described in the OpenAPI specification. Each contains the endpoint's path, method, summary, tags, request body, and responses. Below are the contents of the files for each endpoint:
+
+### 1. `auth_login`
+```markdown
 # POST /auth/login
 
 ## Summary
@@ -19,10 +51,10 @@ User Login
 
 ### 500: Internal Server Error
 - **error** (string, example: An unexpected error occurred)
+```
 
-
-
-
+### 2. `auth_register.md`
+```markdown
 # POST /auth/register
 
 ## Summary
@@ -45,10 +77,10 @@ User Registration
 
 ### 500: Internal Server Error
 - **error** (string, example: An unexpected error occurred)
+```
 
-
-
-
+### 3. `auth_social`
+```markdown
 # POST /auth/social
 
 ## Summary
@@ -70,8 +102,10 @@ Social Authentication
 
 ### 500: Internal Server Error
 - **error** (string, example: An unexpected error occurred)
+```
 
-
+### 4. `auth_magic_link`
+```markdown
 # POST /auth/magic-link
 
 ## Summary
@@ -92,8 +126,10 @@ Magic Link Authentication
 
 ### 500: Internal Server Error
 - **error** (string, example: An unexpected error occurred)
+```
 
-
+### 5. `auth_password_reset_request`
+```markdown
 # POST /auth/password-reset-request
 
 ## Summary
@@ -120,10 +156,10 @@ Request a password reset link to be sent to the user's email
 
 ### 500: Internal Server Error
 - **error** (string, example: An unexpected error occurred)
+```
 
-
-
-
+### 6. `auth_reset_password`
+```markdown
 # POST /auth/reset-password
 
 ## Summary
@@ -151,8 +187,10 @@ Reset the user's password using a reset token
 
 ### 500: Internal Server Error
 - **error** (string, example: An unexpected error occurred)
+```
 
-
+### 7. `users_get`
+```markdown
 # GET /users
 
 ## Summary
@@ -175,15 +213,16 @@ List Users
       "$ref": "#/components/schemas/User"
     }
   }
+  ```
+
 ### 400: Bad request
-error (string, example: Invalid request parameters)
+- **error** (string, example: Invalid request parameters)
+
 ### 500: Internal Server Error
-error (string, example: An unexpected error occurred)
+- **error** (string, example: An unexpected error occurred)
+```
 
-
-
-
-### 8. `users_userId
+### 8. `users_userId_get.md`
 ```markdown
 # GET /users/{userId}
 
@@ -206,17 +245,16 @@ Get User Details
   {
     "$ref": "#/components/schemas/User"
   }
+  ```
 
 ### 404: User not found
 - **error** (string, example: User not found)
 
 ### 500: Internal Server Error
 - **error** (string, example: An unexpected error occurred)
+```
 
-
-
-
-
+### 9. `users_userId_put.md`
 ```markdown
 # PUT /users/{userId}
 
@@ -239,16 +277,20 @@ Update User
   {
     "$ref": "#/components/schemas/User"
   }
+  ```
+
 ## Responses
- ### 200: User updated
-     message (string, example: User updated successfully)
- ### 404: User not found
-     error (string, example: User not found)
- ###500: Internal Server Error
- error (string, example: An unexpected error occurred)
+### 200: User updated
+- **message** (string, example: User updated successfully)
 
+### 404: User not found
+- **error** (string, example: User not found)
 
+### 500: Internal Server Error
+- **error** (string, example: An unexpected error occurred)
+```
 
+### 10. `users_userId_delete.md`
 ```markdown
 # DELETE /users/{userId}
 
@@ -273,8 +315,12 @@ Delete User
 
 ### 500: Internal Server Error
 - **error** (string, example: An unexpected error occurred)
+```
 
+Here are the Markdown files for the remaining endpoints:
 
+### 11. `organisations_get`
+```markdown
 # GET /organisations
 
 ## Summary
@@ -301,23 +347,30 @@ Get all organisations
       }
     ]
   }
+  ```
+
 ### 401: Unauthorized
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Unauthorized"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Unauthorized"
+  }
+  ```
+
 ### 500: Internal Server Error
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
 
-
-
+### 12. `organisations_post.md`
 ```markdown
 # POST /organisations
 
@@ -337,38 +390,45 @@ Create an organisation
   {
     "name": "New Organisation"
   }
-
+  ```
 
 ## Responses
 ### 201: Organisation created successfully
-Content-Type: application/json
-Schema:
-{
-  "status": true,
-  "message": "Organisation created successfully",
-  "data": {
-    "id": "string",
-    "name": "string"
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": true,
+    "message": "Organisation created successfully",
+    "data": {
+      "id": "string",
+      "name": "string"
+    }
   }
-}
+  ```
+
 ### 400: Bad request
-Content-Type: application/json
-Schema:
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Invalid input data"
+  }
+  ```
 
-{
-  "status": false,
-  "message": "Invalid input data"
-}
 ### 500: Internal Server Error
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
 
-
-
+### 13. `organisations_id_get.md`
 ```markdown
 # GET /organisations/{id}
 
@@ -397,30 +457,40 @@ Get an organisation by ID
       "name": "string"
     }
   }
+  ```
+
 ### 401: Unauthorized
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Unauthorized"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Unauthorized"
+  }
+  ```
+
 ### 404: Organisation not found
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Organisation not found"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Organisation not found"
+  }
+  ```
+
 ### 500: Internal Server Error
-Content-Type: application/json
-Schema:
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
 
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
-
-
+### 14. `organisations_id_put.md`
 ```markdown
 # PUT /organisations/{id}
 
@@ -443,49 +513,65 @@ Update an organisation by ID
   {
     "name": "Updated Organisation"
   }
+  ```
+
 ## Responses
 ### 200: Organisation updated successfully
-Content-Type: application/json
-Schema:
-{
-  "status": true,
-  "message": "Organisation updated successfully",
-  "data": {
-    "id": "string",
-    "name": "string"
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": true,
+    "message": "Organisation updated successfully",
+    "data": {
+      "id": "string",
+      "name": "string"
+    }
   }
-}
+  ```
+
 ### 400: Bad request
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Invalid input data"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Invalid input data"
+  }
+  ```
+
 ### 401: Unauthorized
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Unauthorized"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Unauthorized"
+  }
+  ```
+
 ### 404: Organisation not found
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Organisation not found"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Organisation not found"
+  }
+  ```
+
 ### 500: Internal Server Error
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
 
-
-
+### 15. `organisations_id_delete.md`
 ```markdown
 # DELETE /organisations/{id}
 
@@ -510,29 +596,40 @@ Delete an organisation by ID
     "status": true,
     "message": "Organisation deleted successfully"
   }
+  ```
+
 ### 401: Unauthorized
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Unauthorized"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Unauthorized"
+  }
+  ```
+
 ### 404: Organisation not found
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Organisation not found"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Organisation not found"
+  }
+  ```
+
 ### 500: Internal Server Error
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
 
-
+### 16. `organisations_admin_get.md`
 ```markdown
 # GET /organisations/admin
 
@@ -560,22 +657,30 @@ Get all organisations (Admin)
       }
     ]
   }
+  ```
+
 ### 401: Unauthorized
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Unauthorized"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Unauthorized"
+  }
+  ```
+
 ### 500: Internal Server Error
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
 
-
+### 17. `organisations_admin_id_get.md`
 ```markdown
 # GET /organisations/admin/{id}
 
@@ -604,30 +709,40 @@ Get an organisation by ID (Admin)
       "name": "string"
     }
   }
+  ```
+
 ### 401: Unauthorized
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Unauthorized"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Unauthorized"
+  }
+  ```
+
 ### 404: Organisation not found
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Organisation not found"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Organisation not found"
+  }
+  ```
+
 ### 500: Internal Server Error
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
 
-
-
+### 18. `organisations_admin_id_put.md`
 ```markdown
 # PUT /organisations/admin/{id}
 
@@ -650,47 +765,65 @@ Update an organisation by ID (Admin)
   {
     "name": "Updated Organisation"
   }
+  ```
+
 ## Responses
 ### 200: Organisation updated successfully
-Content-Type: application/json
-Schema:
-{
-  "status": true,
-  "message": "Organisation updated successfully",
-  "data": {
-    "id": "string",
-    "name": "string"
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": true,
+    "message": "Organisation updated successfully",
+    "data": {
+      "id": "string",
+      "name": "string"
+    }
   }
-}
-### 400: Bad request
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Invalid input data"
-}
-### 401: Unauthorized
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Unauthorized"
-}
-### 404: Organisation not found
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Organisation not found"
-}
-### 500: Internal Server Error
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
+  ```
 
+### 400: Bad request
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Invalid input data"
+  }
+  ```
+
+### 401: Unauthorized
+- Content-Type: application/json
+- Schema: 
+
+
+  ```json
+  {
+    "status": false,
+    "message": "Unauthorized"
+  }
+  ```
+
+### 404: Organisation not found
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Organisation not found"
+  }
+  ```
+
+### 500: Internal Server Error
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
 
 ### 19. `organisations_admin_id_delete.md`
 ```markdown
@@ -717,28 +850,40 @@ Delete an organisation by ID (Admin)
     "status": true,
     "message": "Organisation deleted successfully"
   }
-### 401: Unauthorized
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Unauthorized"
-}
-### 404: Organisation not found
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "Organisation not found"
-}
-### 500: Internal Server Error
-Content-Type: application/json
-Schema:
-{
-  "status": false,
-  "message": "An unexpected error occurred"
-}
+  ```
 
+### 401: Unauthorized
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Unauthorized"
+  }
+  ```
+
+### 404: Organisation not found
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "Organisation not found"
+  }
+  ```
+
+### 500: Internal Server Error
+- Content-Type: application/json
+- Schema: 
+  ```json
+  {
+    "status": false,
+    "message": "An unexpected error occurred"
+  }
+  ```
+```
+
+Let me know if you need any adjustments or additional information!
 
 
 
@@ -2228,5 +2373,16 @@ Bearer format: JWT
 ## External Documentation
 
 For more details, visit the [BugBusters API Documentation](https://app.swaggerhub.com/apis/BugBusters_HNG/BugBusters/0.0.1).
+
+## Database Design
+
+[Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)  
+
+[Database Reference](https://dbdocs.io/cyber330d/BugBusters)  Password == @BugBusters    Public Documentaton for DB
+
+[![Database ER diagram](https://i.ibb.co/whKQSsP/backend-stage-3-task-1.png)](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
+
+##Versioning
+This API is versioned to ensure backward compatibility and easy maintenance. The current version is 0.0.1
 
 ```
