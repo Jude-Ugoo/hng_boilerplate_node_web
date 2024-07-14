@@ -1,4 +1,4 @@
-# BugBusters API Integration Documentation ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)
+# ![BugBusters API Integration Documentation ![BugBusters API Integration Documentation](https://i.ibb.co/RCdFLsf/bugbusters-logo.png)](https://app.swaggerhub.com/apis/BugBusters_HNG/bugbusters/0.0.1) 
 
 ## Overview
 
@@ -27,7 +27,9 @@ All API endpoints can be referenced in the [Bug Busters API_REFERENCE](https://a
 
 ## Database Design
 
-[Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)  [Database Reference](https://dbdocs.io/cyber330d/BugBusters)
+[Database ER diagram](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)  
+
+[Database Reference](https://dbdocs.io/cyber330d/BugBusters)  Password == @BugBusters    Public Documentaton for DB
 
 [![Database ER diagram](https://i.ibb.co/whKQSsP/backend-stage-3-task-1.png)](https://dbdiagram.io/d/backend-stage-3-task-6691555b9939893daec97fa6)
 
@@ -49,7 +51,7 @@ We would like to thank all the members of Team BugBusters for their contribution
 - **John Kamau (@John Kamau)** - Designed authentication & user resource and management endpoints
 - **Anita Olang (@Anita)** - Designed settings, data exports, widgets, charts, user_data endpoints
 - **Timothy Stephen (@dandy-Tim)** - Designed payment, email, invite, waitlist, email template, contact us notifications endpoints and performed design reviews
-- **Erasmus E Obeth (@cyber330d)** - Database design
+- **Erasmus E Obeth (@cyber330d)** - Database design and optimisation
 
 Special thanks to everyone who has helped make this project better!
 
