@@ -516,7 +516,7 @@
     "/users" : {
       "get" : {
         "summary" : "List Users",
-        "tags" : [ "Users & Organisations" ],
+        "tags" : [ "User Management" ],
         "security" : [ {
           "BearerAuth" : [ ]
         } ],
@@ -572,7 +572,7 @@
     "/users/{userId}" : {
       "get" : {
         "summary" : "Get User Details",
-        "tags" : [ "Users & Organisations" ],
+        "tags" : [ "User Management" ],
         "parameters" : [ {
           "name" : "userId",
           "in" : "path",
@@ -631,7 +631,7 @@
       },
       "put" : {
         "summary" : "Update User",
-        "tags" : [ "Users & Organisations" ],
+        "tags" : [ "User Management" ],
         "parameters" : [ {
           "name" : "userId",
           "in" : "path",
@@ -706,7 +706,7 @@
       },
       "delete" : {
         "summary" : "Delete User",
-        "tags" : [ "Users & Organisations" ],
+        "tags" : [ "User Management" ],
         "parameters" : [ {
           "name" : "userId",
           "in" : "path",
@@ -1308,7 +1308,7 @@
     "/organisations/admin" : {
       "get" : {
         "summary" : "Get all organisations (Admin)",
-        "tags" : [ "Admin" ],
+        "tags" : [ "Organisations Admin" ],
         "security" : [ {
           "BearerAuth" : [ ]
         } ],
@@ -1393,7 +1393,7 @@
     "/organisations/admin/{id}" : {
       "get" : {
         "summary" : "Get an organisation by ID (Admin)",
-        "tags" : [ "Admin" ],
+        "tags" : [ "Organisations Admin" ],
         "security" : [ {
           "BearerAuth" : [ ]
         } ],
@@ -1502,7 +1502,7 @@
       },
       "put" : {
         "summary" : "Update an organisation by ID (Admin)",
-        "tags" : [ "Admin" ],
+        "tags" : [ "Organisations Admin" ],
         "security" : [ {
           "BearerAuth" : [ ]
         } ],
@@ -1647,7 +1647,7 @@
       },
       "delete" : {
         "summary" : "Delete an organisation by ID (Admin)",
-        "tags" : [ "Admin" ],
+        "tags" : [ "Organisations Admin" ],
         "security" : [ {
           "BearerAuth" : [ ]
         } ],
