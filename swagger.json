@@ -4307,5 +4307,9 @@
         }
       }
     }
+  },
+  "externalDocs" : {
+    "description" : "https://app.swaggerhub.com/apis/BugBusters_HNG/BugBusters/0.0.1",
+    "url" : "https://app.swaggerhub.com/apis/BugBusters_HNG/BugBusters/0.0.1"
   }
 }
