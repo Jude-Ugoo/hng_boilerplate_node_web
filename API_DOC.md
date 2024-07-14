@@ -53,7 +53,7 @@ User Login
 - **error** (string, example: An unexpected error occurred)
 ```
 
-### 2. `auth_register.md`
+### 2. `auth_register`
 ```markdown
 # POST /auth/register
 
@@ -222,7 +222,7 @@ List Users
 - **error** (string, example: An unexpected error occurred)
 ```
 
-### 8. `users_userId_get.md`
+### 8. `users_userId_get`
 ```markdown
 # GET /users/{userId}
 
@@ -254,7 +254,7 @@ Get User Details
 - **error** (string, example: An unexpected error occurred)
 ```
 
-### 9. `users_userId_put.md`
+### 9. `users_userId_put`
 ```markdown
 # PUT /users/{userId}
 
@@ -290,7 +290,7 @@ Update User
 - **error** (string, example: An unexpected error occurred)
 ```
 
-### 10. `users_userId_delete.md`
+### 10. `users_userId_delete`
 ```markdown
 # DELETE /users/{userId}
 
@@ -317,7 +317,6 @@ Delete User
 - **error** (string, example: An unexpected error occurred)
 ```
 
-Here are the Markdown files for the remaining endpoints:
 
 ### 11. `organisations_get`
 ```markdown
@@ -370,7 +369,7 @@ Get all organisations
   ```
 ```
 
-### 12. `organisations_post.md`
+### 12. `organisations_post`
 ```markdown
 # POST /organisations
 
@@ -428,7 +427,7 @@ Create an organisation
   ```
 ```
 
-### 13. `organisations_id_get.md`
+### 13. `organisations_id_get`
 ```markdown
 # GET /organisations/{id}
 
@@ -490,7 +489,7 @@ Get an organisation by ID
   ```
 ```
 
-### 14. `organisations_id_put.md`
+### 14. `organisations_id_put`
 ```markdown
 # PUT /organisations/{id}
 
@@ -571,7 +570,7 @@ Update an organisation by ID
   ```
 ```
 
-### 15. `organisations_id_delete.md`
+### 15. `organisations_id_delete`
 ```markdown
 # DELETE /organisations/{id}
 
@@ -629,7 +628,7 @@ Delete an organisation by ID
   ```
 ```
 
-### 16. `organisations_admin_get.md`
+### 16. `organisations_admin_get`
 ```markdown
 # GET /organisations/admin
 
@@ -680,7 +679,7 @@ Get all organisations (Admin)
   ```
 ```
 
-### 17. `organisations_admin_id_get.md`
+### 17. `organisations_admin_id_get`
 ```markdown
 # GET /organisations/admin/{id}
 
@@ -742,7 +741,7 @@ Get an organisation by ID (Admin)
   ```
 ```
 
-### 18. `organisations_admin_id_put.md`
+### 18. `organisations_admin_id_put`
 ```markdown
 # PUT /organisations/admin/{id}
 
@@ -825,7 +824,7 @@ Update an organisation by ID (Admin)
   ```
 ```
 
-### 19. `organisations_admin_id_delete.md`
+### 19. `organisations_admin_id_delete`
 ```markdown
 # DELETE /organisations/admin/{id}
 
